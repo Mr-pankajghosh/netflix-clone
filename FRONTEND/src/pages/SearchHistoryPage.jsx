@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../axios";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { SMALL_IMG_BASE_URL } from "../utils/constants";
@@ -26,7 +26,7 @@ const SearchHistoryPage = () => {
 	useEffect(() => {
 		const getSearchHistory = async () => {
 			try {
-				const res = await axios.get(`/api/v1/search/history`);
+				const res = await axios.get(`/search/history`);
 				setSearchHistory(res.data.content);
 			} catch (error) {
         if (error.response.status === 404) {
@@ -42,7 +42,7 @@ const SearchHistoryPage = () => {
 
 	const handleDelete = async (entry) => {
 	try {
-    await axios.delete(`/api/v1/search/history/${entry.id}`);
+    await axios.delete(`/search/history/${entry.id}`);
     setSearchHistory(searchHistory.filter((item) => item.id !== entry.id));
   } catch (error) {
     if (error.response.status === 404) {
