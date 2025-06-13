@@ -15,21 +15,11 @@ const app = express();
 const PORT = ENV_VARS.PORT;
 
 // ✅ CORS setup for both local & production frontend
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://netflix-clone-ivory-eight.vercel.app"
-];
-
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: ["http://localhost:5173", "https://netflix-clone-ivory-eight.vercel.app"],
   credentials: true
 }));
+
 
 // ✅ Middleware
 app.use(express.json());
