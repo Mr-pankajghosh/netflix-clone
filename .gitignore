@@ -17,7 +17,8 @@ build/
 *.local
 
 # === ENVIRONMENT VARIABLES ===
-.env
+/BACKEND/.env
+
 .env.*  # include .env.development, .env.production, etc.
 
 # === SYSTEM FILES ===
